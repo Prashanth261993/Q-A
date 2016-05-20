@@ -47,6 +47,8 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-tagsinput-rails (0.4.2.1)
+      railties (>= 3.1)
     builder (3.2.2)
     byebug (9.0.2)
     coffee-rails (4.1.1)
@@ -174,6 +176,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
+  bootstrap-tagsinput-rails
   byebug
   coffee-rails (~> 4.1.0)
   devise

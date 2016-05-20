@@ -1,0 +1,72 @@
+<head>
+  <script>
+      var topics = <%= @topics.to_json.html_safe %>
+  </script>
+  <%= javascript_include_tag 'vendor/jquery.tagsinput' %>
+</head>
+<%= render "layouts/header" %>
+<section id ='main-content'>
+  <section class = 'wrapper'>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Subscribe to topics you like</h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i><%= link_to "Home", users_path, method: :get %>></li>
+          <li><i class="fa fa-file-text-o"></i>Subscribe Topics</li>
+        </ol>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-lg-6">
+        <section class="panel">
+          <header class="panel-heading">
+            Tags Input
+          </header>
+          <div class="panel-body">
+            <%= text_field_tag :tags_input, @topics.map(&:name).join(','), :class => 'tagsinput', 'data-role'=>'tagsinput' %>
+          </div>
+        </section>
+
+      </div>
+      <div class = "col-lg-6">
+        <section class="panel">
+          <header class="panel-heading">
+            Tags Input
+          </header>
+          <div class="panel-body">
+            <input name="tagsinput" id="tagsinput" class="tagsinput" value="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal" />
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "col-lg-6">
+        <section class="panel">
+          <header class="panel-heading">
+            Topics you follow
+          </header>
+          <div class="panel-body">
+            <%= text_field_tag :tags_input, @topics.map(&:name).join(','), :class => 'tagsinput' %>
+          </div>
+        </section>
+      </div>
+      <div class = "col-lg-1 center-height">
+        <button class = "btn btn-primary"> Add to your list</button>
+      </div>
+
+      <div class = "col-lg-5">
+        <section class="panel">
+          <header class="panel-heading">
+            Search topics here
+          </header>
+          <div class="panel-body">
+            <%= text_field_tag :tags_input, @topics.map(&:name).join(','), :class => 'tagsinput' %>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </section>
+
+</section>
