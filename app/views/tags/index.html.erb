@@ -3,6 +3,8 @@
       var topics = <%= @topics.to_json.html_safe %>
   </script>
   <%= javascript_include_tag 'vendor/jquery.tagsinput' %>
+  <%= stylesheet_link_tag 'tags/index'%>
+  <%= stylesheet_link_tag 'elegant-icons-style'%>
 </head>
 <%= render "layouts/header" %>
 <section id ='main-content'>
@@ -45,23 +47,50 @@
         <section class="panel">
           <header class="panel-heading">
             Topics you follow
+            <div class = "pull-right"><button class = "btn btn-primary"> Add to your list</button></div>
           </header>
           <div class="panel-body">
-            <%= text_field_tag :tags_input, @topics.map(&:name).join(','), :class => 'tagsinput' %>
+            <table class = "table" id="user-topics">
+              <thead>
+              <tr><td>#</td><td>Topic Name</td><td>Remove</td></tr>
+              </thead>
+
+              <tbody>
+              <% unless @tags.present?%>
+                  <tr><td colspan = "3" style="text-align: center; font-size: large"> No topics added yet</td></tr>
+              <%else%>
+                  <% @tags.map(&:topics).each_with_index  do |topic, index|%>
+                      <tr><td><%=index%></td><td><%=topic.name%></td><td><%=index%></td></tr>
+                  <% end %>
+              <%end%>
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
-      <div class = "col-lg-1 center-height">
-        <button class = "btn btn-primary"> Add to your list</button>
-      </div>
 
-      <div class = "col-lg-5">
+      <div class = "col-lg-6">
         <section class="panel">
           <header class="panel-heading">
-            Search topics here
+            Choose your topics here
           </header>
           <div class="panel-body">
-            <%= text_field_tag :tags_input, @topics.map(&:name).join(','), :class => 'tagsinput' %>
+            <div class="span12">
+              <form id="custom-search-form" class="form-search form-horizontal ">
+                <div class="input-append span12">
+                  <input type="text" class="search-query mac-style" placeholder="Search">
+                  <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+
+              <table id = "list-topics" class = "table">
+                <thead>
+                <tr><td>#</td><td>Topic Name</td><td>Add</td></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+
           </div>
         </section>
       </div>
