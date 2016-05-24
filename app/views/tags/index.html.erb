@@ -1,6 +1,12 @@
 <head>
   <script>
-      var topics = <%= @topics.to_json.html_safe %>
+      var topics = <%= @topics.to_json.html_safe %>;
+      var number_of_tags = <%= @tags.length%>;
+      var topic_ids_followed_by_user = <%=@tags.map(&:topic_id);%>
+      var newly_added_topic_ids = [];
+      var topic_ids_to_be_deleted = [];
+      var update_user_tags_url = '<%= update_user_tags_path%>';
+      var authenticity_token = '<%= form_authenticity_token.html_safe %>';
   </script>
   <%= javascript_include_tag 'vendor/jquery.tagsinput' %>
   <%= stylesheet_link_tag 'tags/index'%>
@@ -47,7 +53,7 @@
         <section class="panel">
           <header class="panel-heading">
             Topics you follow
-            <div class = "pull-right"><button class = "btn btn-primary"> Add to your list</button></div>
+            <div class = "pull-right"><button id="update-tags-btn" disabled class = "btn btn-primary"> Add to your list</button></div>
           </header>
           <div class="panel-body">
             <table class = "table" id="user-topics">
@@ -59,8 +65,8 @@
               <% unless @tags.present?%>
                   <tr><td colspan = "3" style="text-align: center; font-size: large"> No topics added yet</td></tr>
               <%else%>
-                  <% @tags.map(&:topics).each_with_index  do |topic, index|%>
-                      <tr><td><%=index%></td><td><%=topic.name%></td><td><%=index%></td></tr>
+                  <% @tags.map(&:topic).each_with_index  do |topic, index|%>
+                      <tr><td><%=index%></td><td><%=topic.name%></td><td><a class = "btn btn-danger" id = "<%=topic.id%>"><i class = "fa fa-minus-square"></i></a></td></tr>
                   <% end %>
               <%end%>
               </tbody>
