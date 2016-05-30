@@ -1,0 +1,60 @@
+<%= content_for :js do %>
+    <%= javascript_include_tag 'user/profile' %>
+<% end %>
+
+<%= render "layouts/header" %>
+
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <%= form_for current_user, url: users_path, html: { multipart: true, class: 'form-horizontal' } do |form| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <%= image_tag(current_user.profile_picture.url, :class => 'avatar img-circle img-thumbnail' , :id => 'profile_picture_preview') %>
+        <h6>Upload a different photo...</h6>
+        <%= form.file_field :profile_picture %>
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+      </div>
+      <h3>Personal info</h3>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First name:</label>
+          <div class="col-lg-8">
+            <%= form.text_field :first_name, :class => 'form-control'%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last name:</label>
+          <div class="col-lg-8">
+            <%= form.text_field :last_name, :class => 'form-control'%>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Age:</label>
+        <div class="col-lg-8">
+          <%= form.number_field :age, :class => 'form-control'%>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Save Changes" type="button">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

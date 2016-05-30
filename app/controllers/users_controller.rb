@@ -6,4 +6,8 @@ class UsersController < ApplicationController
       redirect_to tags_path
     end
   end
+
+  def profile
+
+  end
 end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'users#index'
   resources :users, only: :index do
-
+    get :profile, on: :collection
   end
 
   resources :tags, only: [ :index, :create] do
