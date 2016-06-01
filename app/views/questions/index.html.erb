@@ -1,0 +1,25 @@
+<%= render "layouts/header" %>
+
+<section id ='main-content'>
+  <section class = 'wrapper'>
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Questions asked by you</h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i><%= link_to "Home", users_path, method: :get %>></li>
+          <li><i class="fa fa-file-text-o"></i>Questions</li>
+        </ol>
+      </div>
+    </div>
+
+<% @questions.each do |question| %>
+    <h3><%= question.title.html_safe %></h3>
+    <p><%= question.content.html_safe %></p>
+    <%= link_to "Edit Question", edit_question_path(question) %>
+    <% if question != @questions.last %>
+        <hr />
+    <% end %>
+<% end %>
+
+      </section>
+    </section>

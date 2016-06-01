@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
 
   root 'users#index'
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :tags, only: [ :index, :create] do
     post :update_user, on: :collection
+  end
+
+  resources :questions do
+
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
