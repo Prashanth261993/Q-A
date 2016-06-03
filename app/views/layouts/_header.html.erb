@@ -231,7 +231,7 @@
         <li class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
+                                <%= image_tag current_user.profile_picture.url(:small) %>
                             </span>
             <span class="username"><%= current_user.email %></span>
             <b class="caret"></b>

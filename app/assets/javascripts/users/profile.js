@@ -1,7 +1,4 @@
-
-$(document).ready(function() {
-    alert('asdasd');
-    debugger;
+function initializeUserProfile() {
     $('#user_profile_picture').on('change', function(event) {
         var files = event.target.files;
         var image = files[0]
@@ -10,10 +7,12 @@ $(document).ready(function() {
             var img = new Image();
             console.log(file);
             img.src = file.target.result;
-            debugger;
-            $('#target').html(img);
+            $target_image = $('#profile_picture_preview')[0];
+            $target_image.src = img.src;
+            $('#image-caption').hide();
         }
         reader.readAsDataURL(image);
         console.log(files);
     });
-});
+}
+

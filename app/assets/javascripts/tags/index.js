@@ -118,15 +118,12 @@ function updateUserTopics(){
     })
 }
 
-$(document).ready  (function(){
+function initializeTagsIndex(){
+    if(number_of_tags != 0)
+        addUserTableEvents();
 
-        if(number_of_tags != 0)
-            addUserTableEvents();
+    populateListTable(topics);
+    $('#update-tags-btn').click(updateUserTopics);
+    $(".tagsinput").tagsinput();
 
-        populateListTable(topics);
-        $('#update-tags-btn').click(updateUserTopics);
-        $(".tagsinput").tagsinput();
-
-    }
-
-);
+}

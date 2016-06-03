@@ -1,6 +1,8 @@
-<%= content_for :js do %>
-    <%= javascript_include_tag 'user/profile' %>
-<% end %>
+<head>
+  <script>
+      $(document).ready(function(){initializeUserProfile();});
+  </script>
+</head>
 
 <%= render "layouts/header" %>
 
@@ -8,12 +10,12 @@
   <h1 class="page-header">Edit Profile</h1>
   <div class="row">
     <!-- left column -->
-    <%= form_for current_user, url: users_path, html: { multipart: true, class: 'form-horizontal' } do |form| %>
+    <%= form_for(current_user, html: { multipart: true, class: 'form-horizontal' , :method => :post } ,url: update_profile_users_path) do |form| %>
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
         <%= image_tag(current_user.profile_picture.url, :class => 'avatar img-circle img-thumbnail' , :id => 'profile_picture_preview') %>
-        <h6>Upload a different photo...</h6>
-        <%= form.file_field :profile_picture %>
+        <h6 id = "image-caption">Upload a different photo...</h6>
+        <%= form.file_field :profile_picture, :class => 'col-lg-4 col-lg-offset-4' %>
       </div>
     </div>
     <!-- edit form column -->
@@ -48,7 +50,8 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
+            <%= form.submit "Save Changes", class: 'btn btn-primary' %>
+            <!--<input class="btn btn-primary" value="Save Changes" type="button">-->
             <span></span>
             <input class="btn btn-default" value="Cancel" type="reset">
           </div>
