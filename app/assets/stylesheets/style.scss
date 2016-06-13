@@ -72,21 +72,21 @@ table tr th { color: #688a7e;}
   background-color: #f1f2f7;
 }
 .login-img-body{
-  background: url('bg-1.jpg') no-repeat center center fixed;
+  background: url('bg-img.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 .login-img2-body{
-  background: url('bg-1.jpg') no-repeat center center fixed;
+  background: url('bg-img.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 .login-img3-body{
-  background: url('bg-1.jpg') no-repeat center center fixed;
+  background: url('bg-img.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -412,7 +412,7 @@ ul.sidebar-menu li.active a i {
 #sidebar ul > li > a .menu-arrow {
   float: right;
   margin-right: 8px;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 #sidebar > ul > li > a .arrow.open {
   border-left: 4px solid transparent;
