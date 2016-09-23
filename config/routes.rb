@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :questions do
 
   end
+
+  resources :messages do
+    get :inbox, on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

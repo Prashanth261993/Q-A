@@ -24,7 +24,7 @@
           <div class = "question-author">
             <a href = "#" original-title = "name" class="question-author-img tooltip-n">
               <span></span>
-              <img src = "<%= ActionController::Base.helpers.asset_path('questions/missing_profile.png') %>">
+              <%= image_tag current_user.profile_picture.url(:author) %>
             </a>
           </div>
           <div class = "question-inner">
